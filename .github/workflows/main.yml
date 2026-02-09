@@ -40,8 +40,15 @@ jobs:
           kustomize edit set image ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}
           rm -f kustomize
       
-      - name: Git Commit/Push Changes
-        uses: actions-x/commit@v2
+      - name: Configure Git
         if: ${{ github.event.inputs.image }}
-        with:
-          message: "kustomize set image to ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}"
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Commit and Push Changes
+        if: ${{ github.event.inputs.image }}
+        run: |
+          git add .
+          git diff --cached --quiet || git commit -m "kustomize set image to ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}"
+          git push
