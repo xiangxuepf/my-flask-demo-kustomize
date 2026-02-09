@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-demo
-  namespace: flask-demo
+  name: flask-demo2
+  namespace: flask-demo2
   labels:
-    app: flask-demo
+    app: flask-demo2
     version: v1
 spec:
   ports:
@@ -13,6 +13,6 @@ spec:
       port: 5000
       targetPort: 5000
   selector:
-    app: flask-demo
+    app: flask-demo2
     version: v1
   type: NodePort
