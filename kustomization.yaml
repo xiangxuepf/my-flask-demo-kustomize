@@ -5,5 +5,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - secret.yaml
-  - post-sync.yaml
-  - pre-sync.yaml
+
+images:
+  - name: 364950776/flask-demo
+    newTag: latest  # 可以通过 CI/CD 动态替换为 git SHA 或版本号
