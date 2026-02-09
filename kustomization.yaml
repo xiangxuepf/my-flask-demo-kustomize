@@ -5,8 +5,6 @@ resources:
 - deployment.yaml
 - service.yaml
 - secret.yaml
-- post-sync.yaml
-- pre-sync.yaml
 images:
 - name: 929174734/flask-demo
   newTag: a2e283d1959086d1326e58ede350c30ee1c95231
