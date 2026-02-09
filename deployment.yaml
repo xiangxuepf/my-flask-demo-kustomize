@@ -1,26 +1,26 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: flask-demo
-  namespace: flask-demo
+  name: flask-demo2
+  namespace: flask-demo2
   labels:
-    app: flask-demo
+    app: flask-demo2
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flask-demo
+      app: flask-demo2
       version: v1
   template:
     metadata:
       labels:
-        app: flask-demo
+        app: flask-demo2
         version: v1
     spec:
       containers:
-        - name: flask-demo
-          image: 364950776/flask-demo
+        - name: flask-demo2
+          image: 929174734/flask-demo2
           ports:
             - name: http-5000
               containerPort: 5000
