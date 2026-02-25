@@ -7,4 +7,4 @@ resources:
 - secret.yaml
 images:
 - name: 929174734/flask-demo2
-  newTag: 8a0fb5682885f1d8df287c865a441fd11535e8f2
+  newTag: 785378979fc4deb87a02c304625c0eeebd0cceb2
