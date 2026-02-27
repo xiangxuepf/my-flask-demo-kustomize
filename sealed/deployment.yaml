@@ -1,0 +1,54 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: flask-demo2
+  namespace: flask-demo2
+  labels:
+    app: flask-demo2
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-demo2
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: flask-demo2
+        version: v1
+    spec:
+      containers:
+        - name: flask-demo2
+          image: 929174734/flask-demo2
+          ports:
+            - name: http-5000
+              containerPort: 5000
+              protocol: TCP
+          imagePullPolicy: Always
+          env:
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: DB_NAME
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: DB_PASSWORD
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: DB_PORT

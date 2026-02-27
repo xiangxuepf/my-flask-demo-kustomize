@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-demo2
+  namespace: flask-demo2
+  labels:
+    app: flask-demo2
+    version: v1
+spec:
+  ports:
+    - name: http-5000
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: flask-demo2
+    version: v1
+  type: NodePort
